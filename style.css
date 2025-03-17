@@ -340,3 +340,34 @@ html {
   border-radius: 5px;
   font-weight: bold;
 }
+
+/* Center Image */
+.profile-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; /* Adds space between image and name */
+}
+
+/* Profile Image Styling */
+.profile-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 4px solid #007bff;
+}
+
+/* Moving Name Animation */
+@keyframes moveName {
+  0% { transform: translateX(-100%); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateX(0); }
+}
+
+.moving-text {
+  display: inline-block;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: blue;
+  animation: moveName 2.5s ease-in-out;
+}
