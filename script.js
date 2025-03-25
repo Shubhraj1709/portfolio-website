@@ -13,19 +13,34 @@ document.querySelectorAll('nav a').forEach(anchor => {
 document.getElementById("contactForm").addEventListener("submit", function(event) {
   event.preventDefault(); // Prevent page reload
 
+  // Initialize EmailJS
+  emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+
   // Get form values
   let name = document.getElementById("name").value;
   let email = document.getElementById("email").value;
   let message = document.getElementById("message").value;
   let responseMessage = document.getElementById("responseMessage");
 
-  // Simulate a backend response after 1 second
-  setTimeout(() => {
-      responseMessage.innerHTML = `<div class="alert alert-success">
-          Thank you, <strong>${name}</strong>! Your message has been sent successfully. 😊
-      </div>`;
+  // Prepare email parameters
+  let templateParams = {
+      from_name: name,
+      from_email: email,
+      message: message
+  };
 
-      // Clear the form fields
-      document.getElementById("contactForm").reset();
-  }, 1000);
+  // Send email using EmailJS
+  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
+      .then(function(response) {
+          responseMessage.innerHTML = `<div class="alert alert-success">
+              Thank you, <strong>${name}</strong>! Your message has been sent successfully. 😊
+          </div>`;
+
+          // Clear form fields
+          document.getElementById("contactForm").reset();
+      }, function(error) {
+          responseMessage.innerHTML = `<div class="alert alert-danger">
+              Oops! Something went wrong. Please try again later. 😞
+          </div>`;
+      });
 });
