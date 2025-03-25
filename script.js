@@ -14,7 +14,7 @@ document.getElementById("contactForm").addEventListener("submit", function(event
   event.preventDefault(); // Prevent page reload
 
   // Initialize EmailJS
-  emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+  emailjs.init("TX8S6YJD_-R4hzOzq"); // Replace with your EmailJS user ID
 
   // Get form values
   let name = document.getElementById("name").value;
@@ -30,7 +30,7 @@ document.getElementById("contactForm").addEventListener("submit", function(event
   };
 
   // Send email using EmailJS
-  emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
+  emailjs.send("service_573vgww", "template_fp076k8", templateParams)
       .then(function(response) {
           responseMessage.innerHTML = `<div class="alert alert-success">
               Thank you, <strong>${name}</strong>! Your message has been sent successfully. 😊
