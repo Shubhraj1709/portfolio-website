@@ -11,7 +11,7 @@
 
   <!--<script src="https://cdn.emailjs.com/dist/email.min.js"></script> -->
 
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> <!--This path represent the sdk of emailJS-->
 
 
 
@@ -235,5 +235,37 @@
   </footer>
 
   <script src="script.js"></script>
+
+  <script>
+    // Disable Right-Click
+    document.addEventListener("contextmenu", function(event) {
+        event.preventDefault();
+    });
+
+    // Disable Certain Keyboard Shortcuts
+    document.addEventListener("keydown", function(event) {
+        if (
+            event.ctrlKey && (event.key === 'u' || event.key === 'U') || // Ctrl + U
+            event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'i') || // Ctrl + Shift + I
+            event.ctrlKey && event.shiftKey && (event.key === 'J' || event.key === 'j') || // Ctrl + Shift + J
+            event.ctrlKey && (event.key === 'S' || event.key === 's') || // Ctrl + S
+            event.key === 'F12' // F12
+        ) {
+            event.preventDefault();
+            alert("Inspecting is disabled! 🚫");
+        }
+    });
+
+    // Detect DevTools Opening
+    setInterval(function() {
+        let before = new Date().getTime();
+        debugger; // Forces the DevTools to pause if opened
+        let after = new Date().getTime();
+        if (after - before > 100) {
+            document.body.innerHTML = "<h1>Inspecting is disabled! 🚫</h1>";
+        }
+    }, 1000);
+</script>
+
 </body>
 </html>

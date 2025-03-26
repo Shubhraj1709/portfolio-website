@@ -39,7 +39,7 @@ document.getElementById("contactForm").addEventListener("submit", function(event
   };
   
   // Send email using EmailJS
-  emailjs.send("service_16fjdw9", "template_fp076k8", templateParams, "TX8S6YJD_-R4hzOzq")
+  emailjs.send("service_16fjdw9", "template_fp076k8", templateParams, "TX8S6YJD_-R4hzOzq") //serviceID , templateID , UserId
     .then(function(response) {
       console.log("SUCCESS!", response);
       responseMessage.innerHTML = `<div class="alert alert-success">
